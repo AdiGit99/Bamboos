@@ -1,0 +1,55 @@
+.sidebar {
+  display: flex;
+  width: 180px;
+  height: 100vh;
+  background-color: rgb(14, 14, 44);
+  position: fixed;
+  justify-content: center;
+  z-index: 5;
+}
+
+.sidebarWrapper {
+  color: #555;
+  border: 2px solid green;
+}
+
+.logo-container-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bamlogo {
+  height: 100px;
+  width: 100px;
+}
+
+.sidebarMenu {
+  margin-bottom: 10px;
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 5px;
+}
+
+.sidebarListItem {
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.active-side {
+  border-left: 2px solid rgb(226, 85, 79);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebarIcon {
+  font-size: 40px !important;
+}

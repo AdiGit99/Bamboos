@@ -1,0 +1,54 @@
+.calendar {
+  display: flex;
+  flex: 1;
+  height: 100vh;
+}
+
+.event-container {
+  width: 400px;
+  height: 100%;
+  border-right: 2px solid grey;
+  padding: 30px;
+  display: block;
+}
+
+.event-wrapper {
+  display: block;
+  height: 100px;
+  width: 350px;
+  border: 2px solid green;
+}
+
+.today {
+  font-size: 20px;
+}
+
+.date-container {
+  display: flex;
+}
+
+.day {
+  font-size: 50px;
+  flex: 0.5;
+}
+
+.date-subcontainer {
+  flex: 1.5;
+}
+
+.week {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.month {
+  display: block;
+}
+
+.calendar-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  height: 100%;
+}

@@ -1,0 +1,40 @@
+@import "../../../styles/globalStyles.scss";
+
+.slider {
+  display: grid;
+  height: 460px;
+  grid-template-columns: repeat(2, 625px);
+}
+
+.slider-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-image-container img {
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+}
+
+.slider-content-container {
+  display: block;
+  padding: 20px;
+  padding-right: 70px;
+}
+
+.slider-content {
+  display: flex;
+  line-height: 1.2;
+  font-size: 24px;
+  font-family: $primary-font;
+}
+
+.slider-person {
+  padding-left: 5px;
+  position: absolute;
+  bottom: 18px;
+  font-size: 20px;
+  font-family: $primary-font;
+}
