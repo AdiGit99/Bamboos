@@ -1,6 +1,8 @@
 .messenger {
   height: calc(100vh - 70px);
   display: flex;
+  border: 2px solid blue;
+  min-width: 1300px;
 }
 
 .chatMenu {

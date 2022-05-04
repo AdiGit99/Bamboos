@@ -1,18 +1,23 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import "./topbar.css";
+import { Person, NotificationsNone, Language } from "@material-ui/icons";
+import { AuthContext } from "../../../context/AuthContext";
+
+import "./topbar.scss";
 import { useDetectOutsideClick } from "./useDetectOutsideClick";
 
-import { Person } from "@material-ui/icons";
-
-import { NotificationsNone, Language } from "@material-ui/icons";
-
-import { Link, NavLink } from "react-router-dom";
-
 export default function Topbar() {
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const onClick = () => setIsActive(!isActive);
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
 
   return (
     <div className="topbar">
@@ -42,7 +47,9 @@ export default function Topbar() {
                   <Link to="/">Switch to customer</Link>
                 </li>
                 <li>
-                  <Link to="/">Logout</Link>
+                  <div className="logout-option" onClick={handleLogout}>
+                    Logout
+                  </div>
                 </li>
               </ul>
             </nav>

@@ -3,7 +3,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
 
-import "./messenger.css";
+import "./messenger.scss";
 
 import Conversation from "../../../components/portal/conversations/Conversation";
 import Message from "../../../components/portal/message/Message";

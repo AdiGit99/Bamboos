@@ -1,0 +1,60 @@
+@import "../../../styles//globalStyles.scss";
+
+.sidebar {
+  display: flex;
+  width: 180px;
+  height: 100%;
+  background-color: rgb(14, 14, 44);
+  position: fixed;
+  justify-content: center;
+  z-index: 5;
+
+  .sidebarWrapper {
+    display: flex;
+    flex-direction: column;
+
+    .logo-container-dashboard {
+      display: flex;
+      align-items: center;
+      //justify-content: center;
+      margin-bottom: 20px;
+
+      .bamlogo {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    .sidebarIcon-container {
+      margin-bottom: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0 5px;
+      border-left: 2px solid rgb(14, 14, 44);
+
+      .sidebarIcon {
+        color: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        margin-right: 5px;
+      }
+
+      h3 {
+        font-family: $primary-font;
+        font-weight: 500;
+        font-size: 16px;
+        color: white;
+        margin-top: 15px;
+      }
+    }
+
+    .active-side {
+      border-left: 2px solid rgb(226, 85, 79);
+    }
+  }
+}
