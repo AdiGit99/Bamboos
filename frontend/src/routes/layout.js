@@ -20,7 +20,7 @@ export const WithNav = ({ user }) => {
 export const WithoutNav = () => {
   return (
     <div className="overflow">
-      <Outlet />;
+      <Outlet />
     </div>
   );
 };

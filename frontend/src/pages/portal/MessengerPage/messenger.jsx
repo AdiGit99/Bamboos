@@ -9,6 +9,7 @@ import Conversation from "../../../components/portal/conversations/Conversation"
 import Message from "../../../components/portal/message/Message";
 import ChatOnline from "../../../components/portal/chatOnline/ChatOnline";
 
+// In future, set default chat with Bamboos Helper
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
@@ -21,7 +22,7 @@ export default function Messenger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("ws://localhost:8800");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -39,11 +40,11 @@ export default function Messenger() {
 
   useEffect(() => {
     socket.current.emit("addUser", user._id);
-    socket.current.on("getUsers", (users) => {
-      setOnlineUsers(
-        user.followings.filter((f) => users.some((u) => u.userId === f))
-      );
-    });
+    // socket.current.on("getUsers", (users) => {
+    //   setOnlineUsers(
+    //     user.followings.filter((f) => users.some((u) => u.userId === f))
+    //   );
+    // });
   }, [user]);
 
   useEffect(() => {
@@ -145,13 +146,13 @@ export default function Messenger() {
           </div>
         </div>
         <div className="chatOnline">
-          <div className="chatOnlineWrapper">
+          {/* <div className="chatOnlineWrapper">
             <ChatOnline
               onlineUsers={onlineUsers}
               currentId={user._id}
               setCurrentChat={setCurrentChat}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

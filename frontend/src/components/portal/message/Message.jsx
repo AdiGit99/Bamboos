@@ -1,4 +1,4 @@
-import "./message.css";
+import "./message.scss";
 import { format } from "timeago.js";
 
 export default function Message({ message, own }) {
