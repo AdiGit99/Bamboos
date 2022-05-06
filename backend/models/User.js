@@ -2,6 +2,30 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
+    firstname: {
+      type: String,
+      default: "",
+      //required: [true, "First name is required"],
+      // trim: true,
+    },
+
+    lastname: {
+      type: String,
+      default: "",
+      //required: [true, "Last name is required"],
+      // trim: true,
+    },
+
+    dob: {
+      type: String,
+      default: "Not Selected",
+    },
+
+    gender: {
+      type: String,
+      defaults: "Not Selected",
+    },
+
     username: {
       type: String,
       require: true,
@@ -9,25 +33,63 @@ const UserSchema = new mongoose.Schema(
       max: 20,
       unique: true,
     },
+
     email: {
       type: String,
       required: true,
       max: 50,
       unique: true,
+      // match:
+      //   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+      // trim: true,
     },
+
     password: {
       type: String,
       required: true,
       min: 6,
     },
+
+    phone: {
+      type: String,
+      default: "",
+    },
+
     profilePicture: {
       type: String,
       default: "",
     },
+
+    location: {
+      type: String,
+      default: "",
+    },
+
+    contacts: {
+      type: Array,
+      default: [],
+    },
+
+    reviews: {
+      type: mongoose.Types.ObjectId,
+      ref: "Review",
+    },
+
+    conversations: {
+      type: mongoose.Types.ObjectId,
+      ref: "Conversation",
+    },
+
     isAdmin: {
       type: Boolean,
       default: false,
     },
+
+    isProvider: {
+      type: Boolean,
+      default: false,
+    },
+
     // desc: {
     //   type: String,
     //   max: 50,
