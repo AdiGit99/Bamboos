@@ -6,10 +6,6 @@ import bamlogo from "../../../assets/bam.png";
 import hero from "../../../assets/login-graphic.png";
 import "./login.scss";
 
-import { loginCall } from "../../../apiCalls";
-import { AuthContext } from "../../../context/AuthContext";
-import { CircularProgress } from "@material-ui/core";
-
 export default function Register() {
   const username = useRef();
   const email = useRef();
