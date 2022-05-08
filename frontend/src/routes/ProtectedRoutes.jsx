@@ -1,5 +1,4 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 import Sidebar from "../components/portal/sidebar/sidebar";
 import Topbar from "../components/portal/topbar/topbar";
