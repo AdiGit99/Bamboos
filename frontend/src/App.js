@@ -38,8 +38,6 @@ import { WithNav, WithoutNav } from "./routes/layout";
 import "./App.css";
 
 function App() {
-  // const [user, setUser] = useState(true);
-
   const { user } = useContext(AuthContext);
   return (
     <Router>

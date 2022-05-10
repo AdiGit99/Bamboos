@@ -117,6 +117,14 @@
         color: $grey;
       }
 
+      .error-message {
+        font-family: $primary-font;
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        color: red;
+      }
+
       span {
         font-family: $primary-font;
         font-weight: 600;

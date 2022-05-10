@@ -14,23 +14,30 @@ mongoose
   })
   .catch((err) => console.log(err));
 
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB disconnected!");
+});
+
 /** Node dependencies */
 const path = require("path");
 
+/** Logging dependencies */
+const morgan = require("morgan");
+
+// /** Passport Configuration */
+// const passport = require("passport");
+// require("./config/passport")(passport);
+
 /** Express */
 const express = require("express");
-const app = express();
 const helmet = require("helmet");
-const morgan = require("morgan");
 const multer = require("multer");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const router = express.Router();
 
-/** Middleware and Logging dependencies */
-app.use(express.json());
-app.use(helmet());
-app.use(morgan("common"));
-
 /** Socket IO */
+const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
   cors: {
@@ -45,6 +52,13 @@ const authRoute = require("./routes/auth");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
 
+/** Middleware */
+app.use(morgan("common"));
+app.use(helmet());
+app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
+
 /** Routes Definitions */
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
@@ -52,6 +66,18 @@ app.use("/api/users", userRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong!";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
+
+/** Upload */
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 const storage = multer.diskStorage({

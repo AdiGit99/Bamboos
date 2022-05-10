@@ -5,21 +5,32 @@ import bamlogo from "../../../assets/bam.png";
 import hero from "../../../assets/login-graphic.png";
 import "./login.scss";
 
-import { loginCall } from "../../../apiCalls";
 import { AuthContext } from "../../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
 
 export default function Login() {
-  const email = useRef();
-  const password = useRef();
-  const { isFetching, dispatch } = useContext(AuthContext);
+
+  const [credentials, setCredentials] = useState({
+    username: undefined,
+    password: undefined,
+  });
+
+  const { loading, error, dispatch } = useContext(AuthContext);
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({...prev, [e.target.id]: e.target.value }));
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", credentials);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      navigate("/")
+    } catch (err) {
+      dispatch({ type: "Login_FAILURE", payload: err.response.data });
+    }
   };
 
   return (
@@ -45,26 +56,27 @@ export default function Login() {
             </div>
             <h1 className="title-login">Welcome Back</h1>
             <h3 className="subtitle-login">Login to your account</h3>
+            {error && <span className="error-message">{error.message}</span>}
             <div className="login-form">
               <form className="login-box" onSubmit={handleClick}>
                 <span>Username</span>
                 <input
-                  type="email"
-                  id="login-email"
+                  type="text"
+                  id="username"
                   required
                   className="text-input"
-                  placeholder="Email"
-                  ref={email}
+                  placeholder="username"
+                  onChange={handleChange}
                 />
                 <span>Password</span>
                 <input
                   type="password"
                   required
-                  id="login-password"
+                  id="password"
                   minLength="6"
                   className="text-input"
                   placeholder="Password"
-                  ref={password}
+                  onChange={handleChange}
                 />
                 <div className="login-need-help">
                   <a className="forgot-password-link" href="/home">
@@ -76,7 +88,7 @@ export default function Login() {
                   type="submit"
                   disabled={isFetching}
                 >
-                  {isFetching ? (
+                  {loading ? (
                     <CircularProgress color="white" size="20px" />
                   ) : (
                     "Sign In"
