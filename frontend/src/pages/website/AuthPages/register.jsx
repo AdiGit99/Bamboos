@@ -7,7 +7,6 @@ import hero from "../../../assets/login-graphic.png";
 import "./login.scss";
 
 export default function Register() {
-  const username = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
@@ -19,7 +18,6 @@ export default function Register() {
       passwordAgain.current.setCustomValidity("Passwords don't match!");
     } else {
       const user = {
-        username: username.current.value,
         email: email.current.value,
         password: password.current.value,
       };
@@ -57,13 +55,6 @@ export default function Register() {
             <h3 className="subtitle-login">Login to your account</h3>
             <div className="login-form">
               <form className="login-box" onSubmit={handleClick}>
-                <span>Username</span>
-                <input
-                  placeholder="Username"
-                  required
-                  ref={username}
-                  className="text-input"
-                />
                 <span>Email</span>
                 <input
                   placeholder="Email"

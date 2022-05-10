@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const AccountSchema = require("./Account");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -24,14 +25,6 @@ const UserSchema = new mongoose.Schema(
     gender: {
       type: String,
       defaults: "Not Selected",
-    },
-
-    username: {
-      type: String,
-      require: true,
-      min: 3,
-      max: 20,
-      unique: true,
     },
 
     email: {
@@ -69,6 +62,8 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+
+    identities: [AccountSchema],
 
     reviews: {
       type: mongoose.Types.ObjectId,

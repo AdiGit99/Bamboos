@@ -30,7 +30,7 @@ exports.register = async (req, res, next) => {
 //custom error message below
 exports.login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.body.email });
     if (!user) {
       return next(createError(404, "User not found!"));
     }

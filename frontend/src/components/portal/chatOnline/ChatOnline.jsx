@@ -47,7 +47,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
             />
             <div className="chatOnlineBadge"></div>
           </div>
-          <span className="chatOnlineName">{o?.username}</span>
+          <span className="chatOnlineName">{o?.firstname}</span>
         </div>
       ))}
     </div>

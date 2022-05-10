@@ -1,6 +1,8 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
+const PORT = process.env.port || 8800;
+
 /** Connect to MongoDB */
 const mongoose = require("mongoose");
 mongoose
@@ -29,12 +31,29 @@ const morgan = require("morgan");
 // require("./config/passport")(passport);
 
 /** Express */
+const cors = require("cors");
 const express = require("express");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const passport = require("./passport");
 const helmet = require("helmet");
 const multer = require("multer");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const router = express.Router();
+
+/** Sessions Middleware */
+app.use(
+  session({
+    secret: "production",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
+
+/** Passport Middlware */
+app.use(passport.initialize());
+app.use(passport.session());
 
 /** Socket IO */
 const app = express();
