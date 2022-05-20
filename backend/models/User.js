@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const AccountSchema = require("./Account");
+const ProviderSchema = require("./Provider");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -27,6 +28,11 @@ const UserSchema = new mongoose.Schema(
       defaults: "Not Selected",
     },
 
+    phone: {
+      type: String,
+      default: "",
+    },
+
     email: {
       type: String,
       required: true,
@@ -41,11 +47,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
       min: 6,
-    },
-
-    phone: {
-      type: String,
-      default: "",
     },
 
     profilePicture: {
@@ -75,6 +76,15 @@ const UserSchema = new mongoose.Schema(
       ref: "Conversation",
     },
 
+    provider_id: [ProviderSchema],
+
+    payment: {
+      // type: mongoose.Types.ObjectId,
+      // ref: "Payment",
+      type: String,
+      default: "",
+    },
+
     isAdmin: {
       type: Boolean,
       default: false,
@@ -84,19 +94,11 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-
-    // desc: {
-    //   type: String,
-    //   max: 50,
-    // },
-    // city: {
-    //   type: String,
-    //   max: 50,
-    // },
-    // from: {
-    //   type: String,
-    //   max: 50,
-    // },
+    //use object id instead?
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

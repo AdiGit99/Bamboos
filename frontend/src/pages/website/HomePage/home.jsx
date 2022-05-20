@@ -23,7 +23,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 
-import Slider from "../../../components/website/slider/Slider";
+import Slider from "../../../components/website/Slider/Slider";
 import "./home.scss";
 
 function Home() {

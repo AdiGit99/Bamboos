@@ -1,0 +1,26 @@
+.protected-general {
+  min-width: 1300px;
+  margin: 0;
+  padding: 0;
+
+  .protected-general-container {
+    display: flex;
+  }
+}
+
+.protected-provider {
+  min-width: 1300px;
+  position: relative;
+  padding: 0;
+  margin: 0;
+
+  .protected-provider-container {
+    margin-left: 180px;
+    max-width: 2000px;
+    height: 100%;
+
+    .protected-provider-content-container {
+      display: flex;
+    }
+  }
+}

@@ -1,15 +1,15 @@
-import React, { useContext, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
 
 import bamlogo from "../../../assets/bam.png";
 import hero from "../../../assets/login-graphic.png";
 import "./login.scss";
 
-import { AuthContext } from "../../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
 
 export default function Login() {
-
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
@@ -17,17 +17,19 @@ export default function Login() {
 
   const { loading, error, dispatch } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
-    setCredentials((prev) => ({...prev, [e.target.id]: e.target.value }));
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/")
+      navigate("/");
     } catch (err) {
       dispatch({ type: "Login_FAILURE", payload: err.response.data });
     }
@@ -86,7 +88,7 @@ export default function Login() {
                 <button
                   className="login-button"
                   type="submit"
-                  disabled={isFetching}
+                  disabled={loading}
                 >
                   {loading ? (
                     <CircularProgress color="white" size="20px" />

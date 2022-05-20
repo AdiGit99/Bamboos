@@ -6,7 +6,7 @@ import two from "../../../assets/two.jpg";
 import three from "../../../assets/three.jpg";
 import four from "../../../assets/four.jpg";
 
-import Accordion from "../../../components/website/accordion/Accordion";
+import Accordion from "../../../components/website/Accordion/Accordion";
 
 import "./client.scss";
 

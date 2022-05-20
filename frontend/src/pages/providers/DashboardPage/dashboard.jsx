@@ -1,8 +1,8 @@
 // import Chart from "../../components/portal/chart";
 import "./dashboard.css";
-import WidgetSm from "../../../components/portal/widgetSm/WidgetSm";
-import WidgetLg from "../../../components/portal/widgetLg/WidgetLg";
-import FeaturedInfo from "../../../components/portal/featuredInfo/FeaturedInfo.js.js";
+import WidgetSm from "../../../components/providers/widgetSm/WidgetSm";
+import WidgetLg from "../../../components/providers/widgetLg/WidgetLg";
+import FeaturedInfo from "../../../components/providers/featuredInfo/FeaturedInfo.js.js";
 
 export default function Dashboard() {
   return (

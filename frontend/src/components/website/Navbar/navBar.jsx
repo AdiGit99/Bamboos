@@ -7,8 +7,8 @@ import bamlogo from "../../../assets/bam.png";
 import { Person } from "@material-ui/icons";
 import { AuthContext } from "../../../context/AuthContext";
 
-import "./navBar.scss";
-import { useDetectOutsideClick } from "../../portal/topbar/useDetectOutsideClick";
+import "./navbar.scss";
+import { useDetectOutsideClick } from "../../providers/topbar/useDetectOutsideClick";
 
 function Navbar({ user }) {
   const { dispatch } = useContext(AuthContext);

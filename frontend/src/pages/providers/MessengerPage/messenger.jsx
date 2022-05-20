@@ -5,9 +5,9 @@ import { io } from "socket.io-client";
 
 import "./messenger.scss";
 
-import Conversation from "../../../components/portal/conversations/Conversation";
-import Message from "../../../components/portal/message/Message";
-import ChatOnline from "../../../components/portal/chatOnline/ChatOnline";
+import Conversation from "../../../components/providers/conversations/Conversation";
+import Message from "../../../components/providers/message/Message";
+import ChatOnline from "../../../components/providers/chatOnline/ChatOnline";
 
 // In future, set default chat with Bamboos Helper
 export default function Messenger() {
