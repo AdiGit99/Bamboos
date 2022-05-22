@@ -8,27 +8,31 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import Home from "./pages/website/HomePage/home";
-import Nurse from "./pages/website/NursePage/nurse";
-import Client from "./pages/website/ClientPage/client";
-import Rates from "./pages/website/RatesPage/rates";
+import Home from "./pages/website/HomePage/Home";
+import Nurse from "./pages/website/NursePage/Nurse";
+import Client from "./pages/website/ClientPage/Client";
+import Rates from "./pages/website/RatesPage/Rates";
 import Login from "./pages/website/AuthPages/login";
-import Register from "./pages/website/AuthPages/register";
-import Error from "./pages/website/ErrorPage/error";
+import Register from "./pages/website/AuthPages/Register";
+import Error from "./pages/website/ErrorPage/Error";
 
-import About from "./pages/website/AboutPage/about";
-import Investors from "./pages/website/InvestorsPage/investors";
-import Careers from "./pages/website/CareersPage/careers";
-import Contact from "./pages/website/ContactPage/contact";
-import Wip from "./pages/website/WIPPage/wip";
+import About from "./pages/website/AboutPage/About";
+import Investors from "./pages/website/InvestorsPage/Investors";
+import Careers from "./pages/website/CareersPage/Careers";
+import Contact from "./pages/website/ContactPage/Contact";
+import Wip from "./pages/website/WIPPage/Wip";
 
-import Dashboard from "./pages/providers/DashboardPage/dashboard";
-import Calendar from "./pages/providers/SchedulePage/schedule";
-import Payment from "./pages/providers/PaymentPage/payment";
-import Account from "./pages/providers/AccountPage/account";
-import Folder from "./pages/providers/FolderPage/folder";
-import Settings from "./pages/providers/SettingsPage/settings";
-import Messenger from "./pages/providers/MessengerPage/messenger";
+import RegisterOne from "./pages/website/RegisterPages/RegisterOne";
+import RegisterTwo from "./pages/website/RegisterPages/RegisterTwo";
+import RegisterThree from "./pages/website/RegisterPages/RegisterThree";
+
+import Dashboard from "./pages/providers/DashboardPage/Dashboard";
+import Calendar from "./pages/providers/SchedulePage/Schedule";
+import Payment from "./pages/providers/PaymentPage/Payment";
+import Account from "./pages/providers/AccountPage/Account";
+import Folder from "./pages/providers/FolderPage/Folder";
+import Settings from "./pages/providers/SettingsPage/Settings";
+import Messenger from "./pages/providers/MessengerPage/Messenger";
 
 import { AuthContext } from "./context/AuthContext";
 import {
@@ -54,16 +58,13 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
-        <Route element={<WithoutNav />}>
-          <Route path="/wip" element={<Wip />} />
-          <Route
-            path="/login"
-            element={user ? <Navigate to="/" /> : <Login />}
-          />
-          <Route
-            path="/signup"
-            element={user ? <Navigate to="/" /> : <Register />}
-          />
+        <Route element={<WithoutNav user={user} />}>
+          <Route path="/login" element={<Login />} />
+          <Route element={<Register />}>
+            <Route path="/registerOne" element={<RegisterOne />} />
+            <Route path="/registerTwo" element={<RegisterTwo />} />
+            <Route path="/registerThree" element={<RegisterThree />} />
+          </Route>
           {/* <Route element={<ProtectedRoutesGeneral user={user} />}>
             <Route path="/looking" element={<Search />} />
             <Route path="/confirm" element={<Summary />} />
@@ -79,6 +80,7 @@ function App() {
             <Route path="/folder" element={<Folder />} />
             <Route path="/settings" element={<Settings />} />
           </Route>
+          <Route path="/wip" element={<Wip />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Calendar, {
   CalendarDayHeader,
-} from "../../../components/providers/calendarView/calendar";
+} from "../../../components/providers/CalendarView/Calendar";
 import "./schedule.css";
 import dayjs from "dayjs";
 

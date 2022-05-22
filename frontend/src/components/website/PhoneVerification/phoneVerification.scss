@@ -1,0 +1,100 @@
+@import "../../../styles/globalStyles.scss";
+
+.phone-verification-container {
+  display: flex;
+  width: 570px;
+  height: 300px;
+  flex-direction: column;
+  padding: 20px;
+
+  .phone-topbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 30px;
+
+    .phone-prev-container {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .phone-prev-container:hover {
+      background-color: grey;
+    }
+
+    h3 {
+      display: flex;
+      font-family: $primary-font;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  .phone-text {
+    font-family: $primary-font;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .phone-verification-input-container {
+    display: flex;
+    width: max-content;
+    position: relative;
+    margin-bottom: 20px;
+
+    .display {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      width: 58px;
+      border-radius: 6px;
+      margin-right: 10px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      position: relative;
+    }
+
+    .display:last-child {
+      border-right: none;
+    }
+
+    .input {
+      position: absolute;
+      border: none;
+      font-size: 32px;
+      text-align: center;
+      background-color: transparent;
+      outline: none;
+    }
+
+    .shadows {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      box-shadow: 0 0 0 2px black;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+    }
+  }
+
+  .phone-options {
+    font-family: $primary-font;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}

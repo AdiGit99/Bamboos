@@ -8,9 +8,9 @@ import { Person } from "@material-ui/icons";
 import { AuthContext } from "../../../context/AuthContext";
 
 import "./navbar.scss";
-import { useDetectOutsideClick } from "../../providers/topbar/useDetectOutsideClick";
+import { useDetectOutsideClick } from "../../providers/Topbar/useDetectOutsideClick";
 
-function Navbar({ user }) {
+function Navbar({ user, toggleAuth }) {
   const { dispatch } = useContext(AuthContext);
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -40,6 +40,11 @@ function Navbar({ user }) {
       clearTimeout(timeout);
       timeout = setTimeout(() => toggleMenu(open), 300);
     }
+  };
+
+  const openAuthForm = () => {
+    setClick(false);
+    toggleAuth();
   };
 
   const handleDropClick = (open) => {
@@ -154,13 +159,13 @@ function Navbar({ user }) {
         <div className="login-nav-option">
           {!user && (
             <div className="login-button-container">
-              <NavLink
+              <div
                 className="login-option"
-                onClick={closeMobileMenu}
-                to="/login"
+                // onClick={closeMobileMenu}
+                onClick={openAuthForm}
               >
                 Login
-              </NavLink>
+              </div>
             </div>
           )}
           {user && (

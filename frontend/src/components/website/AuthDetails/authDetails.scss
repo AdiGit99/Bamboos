@@ -1,0 +1,112 @@
+@import "../../../styles/globalStyles.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+}
+
+.authDetails-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .authDetails-topbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
+
+    .authDetails-close-container {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .authDetails-close-container:hover {
+      background-color: grey;
+    }
+
+    h3 {
+      display: flex;
+      font-family: $primary-font;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  .authDetails-break {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    span {
+      margin: 0 15px;
+    }
+    .authDetails-line {
+      margin-top: 3px;
+      width: 300px;
+      height: 1px;
+    }
+  }
+
+  .authDetails-content {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      display: flex;
+      font-family: $primary-font;
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+
+      .form-input-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid grey;
+        height: 40px;
+        margin-bottom: 20px;
+
+        .text-input {
+          border: none;
+          height: 100%;
+          padding-left: 20px;
+        }
+      }
+
+      h4 {
+        margin-bottom: 15px;
+      }
+
+      .authDetails-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}

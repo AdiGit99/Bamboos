@@ -1,37 +1,32 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
+import { useRef } from "react";
+import { useNavigate, Link, NavLink } from "react-router-dom";
 
 import bamlogo from "../../../assets/bam.png";
 import hero from "../../../assets/login-graphic.png";
 import "./login.scss";
 
-import { CircularProgress } from "@material-ui/core";
-
-export default function Login() {
-  const [credentials, setCredentials] = useState({
-    username: undefined,
-    password: undefined,
-  });
-
-  const { loading, error, dispatch } = useContext(AuthContext);
-
+export default function RegisterTemp() {
+  const email = useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
 
   const handleClick = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
-    try {
-      const res = await axios.post("/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
-    } catch (err) {
-      dispatch({ type: "Login_FAILURE", payload: err.response.data });
+    if (passwordAgain.current.value !== password.current.value) {
+      passwordAgain.current.setCustomValidity("Passwords don't match!");
+    } else {
+      const user = {
+        email: email.current.value,
+        password: password.current.value,
+      };
+      try {
+        await axios.post("/auth/register", user);
+        navigate.push("/login");
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -49,55 +44,44 @@ export default function Login() {
           </div>
           <div className="login-container">
             <div className="alternative-login">
-              <h3>Don't have an account?</h3>
+              <h3>Already have an account?</h3>
               <div className="register-button-container-login">
-                <NavLink
-                  to="/registerOne"
-                  className="register-button-text-login"
-                >
-                  SIGN UP
+                <NavLink to="/login" className="register-button-text-login">
+                  SIGN IN
                 </NavLink>
               </div>
             </div>
             <h1 className="title-login">Welcome Back</h1>
             <h3 className="subtitle-login">Login to your account</h3>
-            {error && <span className="error-message">{error.message}</span>}
             <div className="login-form">
               <form className="login-box" onSubmit={handleClick}>
-                <span>Username</span>
+                <span>Email</span>
                 <input
-                  type="text"
-                  id="username"
+                  placeholder="Email"
                   required
+                  ref={email}
                   className="text-input"
-                  placeholder="username"
-                  onChange={handleChange}
+                  type="email"
                 />
                 <span>Password</span>
                 <input
-                  type="password"
-                  required
-                  id="password"
-                  minLength="6"
-                  className="text-input"
                   placeholder="Password"
-                  onChange={handleChange}
+                  required
+                  ref={password}
+                  className="text-input"
+                  type="password"
+                  minLength="6"
                 />
-                <div className="login-need-help">
-                  <a className="forgot-password-link" href="/home">
-                    Forgot your password?
-                  </a>
-                </div>
-                <button
-                  className="login-button"
-                  type="submit"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <CircularProgress color="white" size="20px" />
-                  ) : (
-                    "Sign In"
-                  )}
+                <span>Confirm Password</span>
+                <input
+                  placeholder="Password Again"
+                  required
+                  ref={passwordAgain}
+                  className="text-input"
+                  type="password"
+                />
+                <button className="loginButton" type="submit">
+                  Sign Up
                 </button>
               </form>
             </div>

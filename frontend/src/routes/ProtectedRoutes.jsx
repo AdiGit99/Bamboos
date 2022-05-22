@@ -1,8 +1,8 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-import Sidebar from "../components/providers/sidebar/sidebar";
-import Topbar from "../components/providers/topbar/topbar";
-import TopNav from "../components/members/topbar/topbar";
+import Sidebar from "../components/providers/Sidebar/Sidebar";
+import Topbar from "../components/providers/Topbar/Topbar";
+import TopNav from "../components/members/Topbar/Topbar";
 import "./protectedRoutes.scss";
 
 export const ProtectedRoutesGeneral = ({ user }) => {
