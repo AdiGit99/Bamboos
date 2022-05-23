@@ -1,14 +1,23 @@
 import React, { useState, createRef } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { ChevronLeft } from "@material-ui/icons";
 import "./phoneVerification.scss";
 
-export default function PhoneVerification({ credentials, previousStep }) {
+export default function PhoneVerification({
+  credentials,
+  toggleAuth,
+  previousStep,
+  nextStep,
+}) {
   const CODE_LENGTH = new Array(6).fill(0);
   const input = createRef();
   const [digits, setDigits] = useState("");
   const [focused, setFocused] = useState(false);
   const code = digits.split("");
+
+  const navigate = useNavigate();
 
   const selectedIndex =
     digits.length < CODE_LENGTH.length ? digits.length : CODE_LENGTH.length - 1;
@@ -41,6 +50,19 @@ export default function PhoneVerification({ credentials, previousStep }) {
     if (e.key === "Backspace") {
       setDigits(digits.slice(0, digits.length - 1));
     }
+  };
+
+  const handleNext = () => {
+    const getUser = async () => {
+      try {
+        const res = await axios.get("/users/find" + credentials.phone);
+        toggleAuth(false);
+        navigate("/");
+      } catch (err) {
+        nextStep();
+      }
+    };
+    getUser();
   };
 
   return (
@@ -87,6 +109,7 @@ export default function PhoneVerification({ credentials, previousStep }) {
       <h3 className="phone-options">
         Didn't get a code? <span>More options</span>
       </h3>
+      <button onClick={handleNext}>temp</button>
     </div>
   );
 }

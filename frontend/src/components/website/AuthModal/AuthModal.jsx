@@ -35,15 +35,10 @@ export default function AuthModal({ toggleAuth }) {
     switch (step) {
       case 0:
         return (
-          // <AuthForm
-          //   handleChange={handleChange}
-          //   toggleAuth={toggleAuth}
-          //   nextStep={nextStep}
-          // />
-          <AuthDetails
-            credentials={credentials}
+          <AuthForm
             handleChange={handleChange}
             toggleAuth={toggleAuth}
+            nextStep={nextStep}
           />
         );
 
@@ -52,12 +47,20 @@ export default function AuthModal({ toggleAuth }) {
         return (
           <PhoneVerification
             credentials={credentials}
+            toggleAuth={toggleAuth}
             previousStep={previousStep}
+            nextStep={nextStep}
           />
         );
 
       case 2:
-        return <AuthDetails />;
+        return (
+          <AuthDetails
+            credentials={credentials}
+            handleChange={handleChange}
+            toggleAuth={toggleAuth}
+          />
+        );
       //Phone verified, find phone in db. If exists, login, else case 2
       //Sign up email, name, socials?, dob then redirect
     }

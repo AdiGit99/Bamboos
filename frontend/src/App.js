@@ -39,7 +39,7 @@ import {
   ProtectedRoutesGeneral,
   ProtectedRoutesProvider,
 } from "./routes/ProtectedRoutes";
-import { WithNav, WithoutNav } from "./routes/layout";
+import { WithNav, WithoutNav } from "./routes/Layout";
 
 import "./App.css";
 

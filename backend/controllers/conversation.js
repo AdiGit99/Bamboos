@@ -1,7 +1,7 @@
 const Conversation = require("../models/Conversation");
 
 //new conv
-exports.addConversation = async (req, res) => {
+const addConversation = async (req, res) => {
   const newConversation = new Conversation({
     members: [req.body.senderId, req.body.receiverId],
   });
@@ -15,7 +15,7 @@ exports.addConversation = async (req, res) => {
 };
 
 //get conv of a user
-exports.getConversations = async (req, res) => {
+const getConversations = async (req, res) => {
   try {
     const conversation = await Conversation.find({
       members: { $in: [req.params.userId] },
@@ -27,7 +27,7 @@ exports.getConversations = async (req, res) => {
 };
 
 // get conv includes two userId
-exports.getConversation = async (req, res) => {
+const getConversation = async (req, res) => {
   try {
     const conversation = await Conversation.findOne({
       members: { $all: [req.params.firstUserId, req.params.secondUserId] },
@@ -36,4 +36,10 @@ exports.getConversation = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+};
+
+module.exports = {
+  addConversation,
+  getConversations,
+  getConversation,
 };

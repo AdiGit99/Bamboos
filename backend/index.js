@@ -34,12 +34,15 @@ const morgan = require("morgan");
 const cors = require("cors");
 const express = require("express");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
 const passport = require("./passport");
 const helmet = require("helmet");
 const multer = require("multer");
 const cookieParser = require("cookie-parser");
 const router = express.Router();
+
+/** Start Server */
+const app = express();
 
 /** Sessions Middleware */
 app.use(
@@ -47,7 +50,7 @@ app.use(
     secret: "production",
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL }),
   })
 );
 
@@ -56,7 +59,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /** Socket IO */
-const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
   cors: {

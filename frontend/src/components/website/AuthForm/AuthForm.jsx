@@ -12,23 +12,13 @@ import "./authform.scss";
 export default function AuthForm({ handleChange, toggleAuth, nextStep }) {
   const { loading, error, dispatch } = useContext(AuthContext);
 
+  const states = [
+    ["CA1", "Canada (+1)"],
+    ["HK852", "Hong Kong (+852)"],
+    ["US1", "United States (+1)"],
+  ];
+
   const navigate = useNavigate();
-
-  // const handleChange = (e) => {
-  //   setPhone((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  // };
-
-  // const handleClick = async (e) => {
-  //   e.preventDefault();
-  //   dispatch({ type: "CHECK_PHONE" });
-  //   try {
-  //     const res = await axios.post("/auth/phone", phone);
-  //     dispatch({ type: "PHONE_SUCCESS", payload: res.data.details });
-  //     navigate("/");
-  //   } catch (err) {
-  //     dispatch({ type: "PHONE_FAILURE", payload: err.response.data });
-  //   }
-  // };
 
   return (
     <div className="auth-container">
@@ -40,34 +30,46 @@ export default function AuthForm({ handleChange, toggleAuth, nextStep }) {
       </div>
       <div className="auth-content">
         <h2>Welcome to Bamboos</h2>
-        {/* <form className="form" onSubmit={handleClick}> */}
-        <div className="form" onClick={nextStep}>
-          <div className="form-input-container input-one">
-            <h3>Country/Region</h3>
-            <h3>Hong Kong (+852)</h3>
+        <div className="form">
+          <div className="select-container input-one">
+            <div className="select-container-label">Country/Region</div>
+            <div className="countrycode-container">
+              <select className="login-signup-countrycode">
+                {states.map(([value, name]) => (
+                  <option key={value} value={value}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="form-input-container input-two">
+          <div className="input-two">
             <input
               type="phone"
               required
               id="phone"
               className="form-input"
-              placeholder="Phone number"
+              placeholder=""
               onChange={handleChange}
             />
+            <span className="floating-label">Phone number</span>
           </div>
           <h4>
             We'll call or text you to confirm your number. Standard message and
             data rates apply.
           </h4>
-          <button className="auth-button" type="submit" disabled={loading}>
+          <button
+            className="auth-button"
+            type="submit"
+            disabled={loading}
+            onClick={nextStep}
+          >
             {loading ? (
               <CircularProgress color="white" size="20px" />
             ) : (
               "Continue"
             )}
           </button>
-          {/* </form> */}
         </div>
         <div className="auth-break">
           <hr className="auth-line" />

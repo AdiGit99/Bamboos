@@ -21,7 +21,7 @@ export default function AuthForm({ credentials, handleChange, toggleAuth }) {
       // first: credentials.first,
       // last: credentials.last,
       // dob: credentials.dob,
-      // phone: credentials.dob,
+      // phone: credentials.phone,
     };
     try {
       await axios.post("/auth/register", user);

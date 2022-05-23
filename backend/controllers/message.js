@@ -1,7 +1,7 @@
 const Message = require("../models/Message");
 
 //add
-exports.addMessage = async (req, res) => {
+const addMessage = async (req, res) => {
   const newMessage = new Message(req.body);
 
   try {
@@ -13,7 +13,7 @@ exports.addMessage = async (req, res) => {
 };
 
 //get
-exports.getMessage = async (req, res) => {
+const getMessage = async (req, res) => {
   try {
     const messages = await Message.find({
       conversationId: req.params.conversationId,
@@ -22,4 +22,9 @@ exports.getMessage = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+};
+
+module.exports = {
+  addMessage,
+  getMessage,
 };

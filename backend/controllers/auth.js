@@ -5,7 +5,7 @@ const createError = require("../utils/error.js");
 const express = require("express");
 
 //REGISTER
-exports.register = async (req, res, next) => {
+const register = async (req, res, next) => {
   try {
     //generate new password
     const salt = await bcrypt.genSaltSync(10);
@@ -28,7 +28,7 @@ exports.register = async (req, res, next) => {
 //LOGIN
 //validate input in frontend
 //custom error message below
-exports.login = async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.email });
     if (!user) {
@@ -59,4 +59,9 @@ exports.login = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+module.exports = {
+  register,
+  login,
 };

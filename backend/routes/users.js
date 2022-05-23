@@ -3,6 +3,7 @@ const {
   updateUser,
   deleteUser,
   getUser,
+  getUserByPhone,
   getUsers,
 } = require("../controllers/user");
 const {
@@ -15,5 +16,6 @@ router.put("/:id", verifyUser, updateUser);
 router.delete("/:id", verifyUser, deleteUser);
 router.get("/:id", verifyUser, getUser);
 router.get("/", verifyAdmin, getUsers);
+router.get("/find/:phone", getUserByPhone);
 
 module.exports = router;

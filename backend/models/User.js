@@ -7,20 +7,21 @@ const UserSchema = new mongoose.Schema(
     firstname: {
       type: String,
       default: "",
-      //required: [true, "First name is required"],
+      required: [true, "First name is required"],
       // trim: true,
     },
 
     lastname: {
       type: String,
       default: "",
-      //required: [true, "Last name is required"],
+      required: [true, "Last name is required"],
       // trim: true,
     },
 
     dob: {
       type: String,
       default: "Not Selected",
+      required: true,
     },
 
     gender: {
@@ -31,6 +32,7 @@ const UserSchema = new mongoose.Schema(
     phone: {
       type: String,
       default: "",
+      required: true,
     },
 
     email: {
@@ -64,7 +66,7 @@ const UserSchema = new mongoose.Schema(
       default: [],
     },
 
-    identities: [AccountSchema],
+    identities: [],
 
     reviews: {
       type: mongoose.Types.ObjectId,
@@ -76,7 +78,7 @@ const UserSchema = new mongoose.Schema(
       ref: "Conversation",
     },
 
-    provider_id: [ProviderSchema],
+    provider_id: [],
 
     payment: {
       // type: mongoose.Types.ObjectId,
