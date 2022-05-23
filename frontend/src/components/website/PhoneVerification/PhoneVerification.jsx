@@ -8,8 +8,7 @@ import "./phoneVerification.scss";
 export default function PhoneVerification({
   credentials,
   toggleAuth,
-  previousStep,
-  nextStep,
+  changeStep,
 }) {
   const CODE_LENGTH = new Array(6).fill(0);
   const input = createRef();
@@ -59,7 +58,7 @@ export default function PhoneVerification({
         toggleAuth(false);
         navigate("/");
       } catch (err) {
-        nextStep();
+        changeStep(3);
       }
     };
     getUser();
@@ -68,7 +67,7 @@ export default function PhoneVerification({
   return (
     <div className="phone-verification-container">
       <div className="phone-topbar">
-        <div className="phone-prev-container" onClick={previousStep}>
+        <div className="phone-prev-container" onClick={() => changeStep(0)}>
           <ChevronLeft className="phone-prev" />
         </div>
         <h3>Confirm your number</h3>

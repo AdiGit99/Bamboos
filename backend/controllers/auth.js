@@ -30,7 +30,7 @@ const register = async (req, res, next) => {
 //custom error message below
 const login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.body.email });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return next(createError(404, "User not found!"));
     }
@@ -41,7 +41,7 @@ const login = async (req, res, next) => {
     );
 
     if (!isPasswordCorrect) {
-      return next(createError(400, "Wrong username or password"));
+      return next(createError(400, "Wrong email or password"));
     }
 
     const token = jwt.sign(

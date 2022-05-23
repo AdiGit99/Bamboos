@@ -3,14 +3,14 @@ import React, { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 
-import { Close } from "@material-ui/icons";
+import { Close, Email } from "@material-ui/icons";
 import { CircularProgress } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import "./authform.scss";
 
-export default function AuthForm({ handleChange, toggleAuth, nextStep }) {
-  const { loading, error, dispatch } = useContext(AuthContext);
+export default function AuthForm({ handleChange, toggleAuth, changeStep }) {
+  const loading = false;
 
   const states = [
     ["CA1", "Canada (+1)"],
@@ -62,7 +62,7 @@ export default function AuthForm({ handleChange, toggleAuth, nextStep }) {
             className="auth-button"
             type="submit"
             disabled={loading}
-            onClick={nextStep}
+            onClick={() => changeStep(2)}
           >
             {loading ? (
               <CircularProgress color="white" size="20px" />
@@ -87,6 +87,10 @@ export default function AuthForm({ handleChange, toggleAuth, nextStep }) {
             <FontAwesomeIcon icon={faGoogle} size="2x" />
           </div>
           <h3>Continue with Google</h3>
+        </div>
+        <div className="auth2-login-container" onClick={() => changeStep(1)}>
+          <div className="auth2-logo-container">Temp</div>
+          <h3>Continue with Email</h3>
         </div>
       </div>
     </div>

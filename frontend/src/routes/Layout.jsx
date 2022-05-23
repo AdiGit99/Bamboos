@@ -37,10 +37,8 @@ export const WithNav = ({ user }) => {
   );
 };
 
-export const WithoutNav = ({ user }) => {
-  return user ? (
-    <Navigate to="/" />
-  ) : (
+export const WithoutNav = () => {
+  return (
     <div className="overflow">
       <Outlet />
     </div>

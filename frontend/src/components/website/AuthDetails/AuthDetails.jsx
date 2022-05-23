@@ -7,7 +7,12 @@ import { Close } from "@material-ui/icons";
 import { CircularProgress } from "@material-ui/core";
 import "./authDetails.scss";
 
-export default function AuthForm({ credentials, handleChange, toggleAuth }) {
+export default function AuthForm({
+  credentials,
+  handleChange,
+  toggleAuth,
+  changeStep,
+}) {
   const { loading } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -18,14 +23,16 @@ export default function AuthForm({ credentials, handleChange, toggleAuth }) {
     const user = {
       email: credentials.email,
       password: credentials.password,
-      // first: credentials.first,
-      // last: credentials.last,
-      // dob: credentials.dob,
-      // phone: credentials.phone,
+      firstname: credentials.firstname,
+      lastname: credentials.lastname,
+      dob: credentials.dob,
+      phone: credentials.phone,
     };
+
+    console.log(user);
     try {
       await axios.post("/auth/register", user);
-      navigate.push("/login");
+      changeStep(1);
     } catch (err) {
       console.log(err);
     }
@@ -49,7 +56,7 @@ export default function AuthForm({ credentials, handleChange, toggleAuth }) {
           <div className="form-input-container">
             <input
               type="text"
-              id="Email"
+              id="email"
               required
               className="text-input"
               placeholder="email"
@@ -59,7 +66,7 @@ export default function AuthForm({ credentials, handleChange, toggleAuth }) {
           <div className="form-input-container">
             <input
               type="text"
-              id="first"
+              id="firstname"
               required
               className="text-input"
               placeholder="First name"
@@ -69,7 +76,7 @@ export default function AuthForm({ credentials, handleChange, toggleAuth }) {
           <div className="form-input-container">
             <input
               type="text"
-              id="last"
+              id="lastname"
               required
               className="text-input"
               placeholder="Last name"
@@ -87,6 +94,16 @@ export default function AuthForm({ credentials, handleChange, toggleAuth }) {
             />
           </div>
           <h2>Birthday</h2>
+          <div className="form-input-container">
+            <input
+              type="date"
+              id="dob"
+              required
+              className="text-input"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+          </div>
           <p>
             By click Sign up or Continue with, I agree to Bamboo's Terms of
             Service, Payments Terms of Service, Privacy Policy, and
