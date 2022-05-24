@@ -56,7 +56,7 @@ export default function AuthEmail({
           <div className="form-input-container">
             <input
               type="text"
-              id="Email"
+              id="email"
               required
               className="text-input"
               placeholder="email"

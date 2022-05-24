@@ -1,8 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-import Sidebar from "../components/providers/Sidebar/Sidebar";
 import Topbar from "../components/providers/Topbar/Topbar";
-import TopNav from "../components/members/Topbar/Topbar";
+import TopNav from "../components/members/TopbarGeneral/TopbarGeneral";
 import "./protectedRoutes.scss";
 
 export const ProtectedRoutesGeneral = ({ user }) => {
@@ -21,12 +20,9 @@ export const ProtectedRoutesGeneral = ({ user }) => {
 export const ProtectedRoutesProvider = ({ user }) => {
   return user ? (
     <div className="protected-provider">
-      <Sidebar />
-      <div className="protected-provider-container">
-        <Topbar />
-        <div className="protected-provider-content-container">
-          <Outlet />
-        </div>
+      <Topbar />
+      <div className="protected-provider-content-container">
+        <Outlet />
       </div>
     </div>
   ) : (

@@ -28,13 +28,6 @@ import Register from "./pages/website/AuthPages/Register";
 import RegisterOne from "./pages/website/RegisterPages/RegisterOne";
 import RegisterTwo from "./pages/website/RegisterPages/RegisterTwo";
 import RegisterThree from "./pages/website/RegisterPages/RegisterThree";
-import Dashboard from "./pages/providers/DashboardPage/Dashboard";
-import Calendar from "./pages/providers/SchedulePage/Schedule";
-import Payment from "./pages/providers/PaymentPage/Payment";
-import Account from "./pages/providers/AccountPage/Account";
-import Folder from "./pages/providers/FolderPage/Folder";
-import Settings from "./pages/providers/SettingsPage/Settings";
-import Messenger from "./pages/providers/MessengerPage/Messenger";
 
 import { AuthContext } from "./context/AuthContext";
 import {
@@ -72,15 +65,7 @@ function App() {
             <Route path="/history" element={<History />} /> */}
             <Route path="/messages" element={<Messages />} />
           </Route>
-          <Route element={<ProtectedRoutesProvider user={user} />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/schedule" element={<Calendar />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/messenger" element={<Messenger />} />
-            <Route path="/folder" element={<Folder />} />
-            <Route path="/settings" element={<Settings />} />
-          </Route>
+          <Route element={<ProtectedRoutesProvider user={user} />}></Route>
           <Route path="/wip" element={<Wip />} />
           <Route path="*" element={<Error />} />
         </Route>

@@ -1,0 +1,125 @@
+.calendar-root {
+  --grid-gap: 2px;
+  --grid-height: 700px;
+  --text-color-light: rgba(0, 0, 0, 0.4);
+  --text-color-primary: rgba(0, 0, 0, 0.7);
+  --grid-background-color: rgb(211, 205, 198);
+  --grid-foreground-color: white;
+  --space-sm: 4px;
+  --space-md: 8px;
+  --space-lg: 16px;
+  margin: 0 auto;
+}
+
+/* | Sun | Mon | Tue | Wed | Thu | Fri | Sat  */
+.day-of-week-header-cell {
+  color: var(--text-color-primary);
+  background-color: var(--grid-foreground-color);
+  padding: var(--space-md) 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calendar-wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.days-of-week,
+.days-grid {
+  width: 1000;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: var(--grid-gap);
+  grid-row-gap: var(--grid-gap);
+}
+
+.days-grid {
+  height: var(--grid-height);
+  position: relative;
+  border: var(--grid-gap) solid var(--grid-background-color);
+  background-color: var(--grid-background-color);
+}
+
+.day-grid-item-container {
+  position: relative;
+  background-color: var(--grid-foreground-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.day-grid-item-container:not(.current-month) .day-grid-item-header {
+  color: var(--text-color-light);
+}
+
+/* Position the day label within the day cell */
+.day-grid-item-container .day-grid-item-header {
+  color: var(--text-color-primary);
+  padding: var(--space-md);
+  padding-bottom: 0;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.day-grid-item-container > .day-content-wrapper {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.navigation-header {
+  display: flex;
+  border: 2px solid blue;
+  position: relative;
+  height: 50px;
+}
+
+.calendar-navigation-wrapper {
+  display: flex;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+}
+
+.navigation-header > * {
+  margin-right: var(--space-md);
+}
+
+.month-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 20px;
+}
+
+.entry.one {
+  display: inline-block;
+  width: 80px;
+}
+
+.entry.two {
+  display: inline-block;
+  width: 10px;
+}
+
+.entry.three {
+  display: inline-block;
+  width: 40px;
+}
+
+.month .month-nav-arrow-buttons {
+  display: flex;
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  color: black;
+  font-size: 20px;
+}
