@@ -7,11 +7,9 @@ import bamlogo from "../../assets/bam.png";
 import hero from "../../assets/login-graphic.png";
 import "./login.scss";
 
-import { CircularProgress } from "@material-ui/core";
-
 export default function Login() {
   const [credentials, setCredentials] = useState({
-    username: undefined,
+    email: undefined,
     password: undefined,
   });
 
@@ -28,8 +26,15 @@ export default function Login() {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
+      if (res.data.isAdmin) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+        navigate("/");
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "You are not allowed!" },
+        });
+      }
     } catch (err) {
       dispatch({ type: "Login_FAILURE", payload: err.response.data });
     }
@@ -64,10 +69,10 @@ export default function Login() {
             {error && <span className="error-message">{error.message}</span>}
             <div className="login-form">
               <form className="login-box" onSubmit={handleClick}>
-                <span>Username</span>
+                <span>Email</span>
                 <input
                   type="text"
-                  id="username"
+                  id="email"
                   required
                   className="text-input"
                   placeholder="username"
@@ -84,7 +89,7 @@ export default function Login() {
                   onChange={handleChange}
                 />
                 <div className="login-need-help">
-                  <a className="forgot-password-link" href="/home">
+                  <a className="forgot-password-link" href="/error">
                     Forgot your password?
                   </a>
                 </div>
@@ -93,12 +98,9 @@ export default function Login() {
                   type="submit"
                   disabled={loading}
                 >
-                  {loading ? (
-                    <CircularProgress color="white" size="20px" />
-                  ) : (
-                    "Sign In"
-                  )}
+                  Login
                 </button>
+                {error && <span>{error.message}</span>}
               </form>
             </div>
           </div>

@@ -1,7 +1,9 @@
 import React, { useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { Person, NotificationsNone, Language } from "@material-ui/icons";
+import PersonIcon from "@mui/icons-material/Person";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import LanguageIcon from "@mui/icons-material/Language";
 import { AuthContext } from "../../context/AuthContext";
 
 import "./topbar.scss";
@@ -24,16 +26,16 @@ export default function Topbar() {
       <div className="topbarWrapper">
         <div className="right">
           <div className="topbarIconContainer">
-            <NotificationsNone />
+            <NotificationsNoneIcon />
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarIconContainer">
-            <Language />
+            <LanguageIcon />
             <span className="topIconBadge">2</span>
           </div>
           <div className="menu-container">
             <button onClick={onClick} className="menu-trigger">
-              <Person className="topAvatar" />
+              <PersonIcon className="topAvatar" />
             </button>
             <nav
               ref={dropdownRef}

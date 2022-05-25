@@ -1,11 +1,9 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 import {
   daysOfWeek,
   createDaysForCurrentMonth,
@@ -84,8 +82,7 @@ export default function Calendar({
       <div className="navigation-header">
         <div className="calendar-navigation-wrapper">
           <div className="month-nav-arrow-buttons">
-            <FontAwesomeIcon
-              icon={faChevronLeft}
+            <ChevronLeftIcon
               className="button"
               onClick={handleMonthNavBackButtonClick}
             />
@@ -105,8 +102,7 @@ export default function Calendar({
             ))} */}
           </div>
           <div className="month-nav-arrow-buttons">
-            <FontAwesomeIcon
-              icon={faChevronRight}
+            <ChevronRightIcon
               className="button"
               onClick={handleMonthNavForwardButtonClick}
             />

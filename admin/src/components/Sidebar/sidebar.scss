@@ -17,7 +17,6 @@
       display: flex;
       align-items: center;
       //justify-content: center;
-      margin-bottom: 20px;
 
       .bamlogo {
         height: 100px;
@@ -25,36 +24,57 @@
       }
     }
 
-    .sidebarIcon-container {
-      margin-bottom: 25px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 0 5px;
-      border-left: 2px solid rgb(14, 14, 44);
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
-      .sidebarIcon {
+      .title {
+        font-family: $primary-font;
+        font-size: 15px;
+        font-weight: 500;
         color: white;
+        margin: 15px 0 5px 8px;
+      }
+
+      .sidebarIcon-container {
+        margin-bottom: 8px;
         cursor: pointer;
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-size: 40px;
-        margin-right: 5px;
-      }
+        width: 100%;
+        border-left: 2px solid rgb(14, 14, 44);
 
-      h3 {
-        font-family: $primary-font;
-        font-weight: 500;
-        font-size: 16px;
-        color: white;
-        margin-top: 15px;
-      }
-    }
+        li {
+          display: flex;
+          align-items: center;
+          padding: 0 5px;
+          cursor: pointer;
 
-    .active-side {
-      border-left: 2px solid rgb(226, 85, 79);
+          &:hover {
+            background-color: #111;
+          }
+
+          .icon {
+            font-size: 25px;
+            fill: #7451f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          h3 {
+            font-family: $primary-font;
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(217, 216, 255, 255);
+            margin-left: 10px;
+          }
+        }
+      }
+      .active-side {
+        border-left: 2px solid rgb(226, 85, 79);
+      }
     }
   }
 }
