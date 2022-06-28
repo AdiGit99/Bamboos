@@ -28,7 +28,8 @@ export default function Login() {
       const res = await axios.post("/auth/login", credentials);
       if (res.data.isAdmin) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-        navigate("/");
+        console.log(res.data.details);
+        navigate("/dashboard");
       } else {
         dispatch({
           type: "LOGIN_FAILURE",
@@ -103,51 +104,6 @@ export default function Login() {
                 {error && <span>{error.message}</span>}
               </form>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="temp">
-        <hr className="separator" />
-      </div>
-      <div className="footer-login">
-        <div className="footer-container-login">
-          <div className="footer-content-login">
-            <ul className="footer-column-login">
-              <li className="footer-title-login">Bamboos</li>
-              <li>Install</li>
-              <li>Mobile</li>
-              <li>Rates</li>
-              <li>Institutions</li>
-              <li>Features</li>
-              <li>Enterprise</li>
-            </ul>
-            <ul className="footer-column-login">
-              <li className="footer-title-login">About us</li>
-              <li>About</li>
-              <li>News</li>
-              <li>Jobs</li>
-              <li>Bamboos Blog</li>
-            </ul>
-            <ul className="footer-column-login">
-              <li className="footer-title-login">Support</li>
-              <li>Help Center</li>
-              <li>Contact us</li>
-              <li>Copyright</li>
-              <li>Cookies</li>
-              <li>Privacy &amp; Terms</li>
-              <li>Sitemap</li>
-            </ul>
-            <ul className="footer-column-login">
-              <li className="footer-title-login">Community</li>
-              <li>Referrals</li>
-              <li>Forum</li>
-              <li>Facebook</li>
-              <li>Twitter</li>
-              <li>Instagram</li>
-            </ul>
-          </div>
-          <div className="languageLogin">
-            <div className="language-container-login" />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@
 }
 
 .authmodal-container {
-  height: max-content;
+  display: flex;
   width: 570px;
   z-index: 22;
   border: 2px solid blue;
@@ -20,6 +20,7 @@
   animation-duration: 0.6s;
   overflow: auto;
   overflow-x: hidden;
+  position: relative;
 }
 
 @keyframes fadeInBottom {

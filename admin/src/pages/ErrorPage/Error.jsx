@@ -10,7 +10,7 @@ export default function Error() {
   return (
     <div className="error-wrapper">
       <div className="error-container">
-        <Link className="logo-container" to="/">
+        <Link className="logo-container" to="/dashboard">
           <img src={bamlogo} alt="Bamboos Logo" />
         </Link>
         <div className="error-image-container">

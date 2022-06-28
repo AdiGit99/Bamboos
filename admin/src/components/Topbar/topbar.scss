@@ -14,6 +14,24 @@
     align-items: center;
     justify-content: space-between;
 
+    .search {
+      display: flex;
+      align-items: center;
+      border: 0.5px solid lightgray;
+      padding: 3px;
+
+      input {
+        width: 120px;
+        border: none;
+        outline: none;
+        background: transparent;
+      }
+
+      &::placeholder {
+        font-size: 12px;
+      }
+    }
+
     .right {
       padding: 0 15px;
       margin-left: auto;
@@ -25,6 +43,11 @@
         cursor: pointer;
         margin-right: 20px;
         color: #555;
+        align-items: center;
+
+        .topbarIcon {
+          font-size: 20px;
+        }
       }
 
       .topIconBadge {

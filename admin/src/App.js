@@ -22,12 +22,12 @@ import { AuthContext } from "./context/AuthContext";
 import "./App.css";
 
 function App() {
-  const { admin } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <Router>
       <Routes>
         <Route path="/" exact element={<Login />} />
-        <Route element={<ProtectedRoutes admin={admin} />}>
+        <Route element={<ProtectedRoutes user={user} />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/account" element={<Account />} />
           <Route path="/schedule" element={<Calendar />} />

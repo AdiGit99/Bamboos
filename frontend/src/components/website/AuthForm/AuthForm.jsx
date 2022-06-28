@@ -7,6 +7,7 @@ import { Close, Email } from "@material-ui/icons";
 import { CircularProgress } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import "./authform.scss";
 
 export default function AuthForm({ handleChange, toggleAuth, changeStep }) {
@@ -78,18 +79,20 @@ export default function AuthForm({ handleChange, toggleAuth, changeStep }) {
         </div>
         <div className="auth2-login-container">
           <div className="auth2-logo-container">
-            <FontAwesomeIcon icon={faFacebook} size="2x" />
+            <FontAwesomeIcon icon={faFacebook} className="auth2-icon" />
           </div>
           <h3>Continue with Facebook</h3>
         </div>
         <div className="auth2-login-container">
           <div className="auth2-logo-container">
-            <FontAwesomeIcon icon={faGoogle} size="2x" />
+            <FontAwesomeIcon icon={faGoogle} className="auth2-icon" />
           </div>
           <h3>Continue with Google</h3>
         </div>
         <div className="auth2-login-container" onClick={() => changeStep(1)}>
-          <div className="auth2-logo-container">Temp</div>
+          <div className="auth2-logo-container">
+            <FontAwesomeIcon icon={faEnvelope} className="auth2-icon" />
+          </div>
           <h3>Continue with Email</h3>
         </div>
       </div>

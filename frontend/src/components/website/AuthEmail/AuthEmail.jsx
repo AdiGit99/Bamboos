@@ -3,8 +3,11 @@ import React, { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 
-import { ChevronLeft } from "@material-ui/icons";
+import { Close, Email } from "@material-ui/icons";
 import { CircularProgress } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faMobileScreen } from "@fortawesome/free-solid-svg-icons";
 import "./authEmail.scss";
 
 export default function AuthEmail({
@@ -36,51 +39,78 @@ export default function AuthEmail({
   };
 
   return (
-    <div className="authDetails-container">
-      <div className="authDetails-topbar">
-        <div
-          className="authDetails-close-container"
-          onClick={() => changeStep(0)}
-        >
-          <ChevronLeft className="authDetails-close" />
+    <div className="authEmail-container">
+      <div className="authEmail-topbar">
+        <div className="authEmail-close-container" onClick={toggleAuth}>
+          <Close className="authEmail-close" />
         </div>
-        <h3>Sign up with Email</h3>
+        <h3>Log in or sign up</h3>
       </div>
-      <div className="authDetails-break">
-        <hr className="authDetails-line" />
-        <span>or</span>
-        <hr className="authDetails-line" />
-      </div>
-      <div className="authDetails-content">
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form-input-container">
+      <div className="authEmail-content">
+        <h2>Welcome to Bamboos</h2>
+        <div className="form">
+          <div className="input-container input-one">
             <input
-              type="text"
+              type="email"
+              required
               id="email"
-              required
-              className="text-input"
-              placeholder="email"
+              className="form-input"
+              placeholder=""
               onChange={handleChange}
             />
+            <span className="floating-label">Email</span>
           </div>
-          <div className="form-input-container">
+          <div className="input-container input-two">
             <input
-              type="text"
-              id="password"
+              type="password"
               required
-              className="text-input"
-              placeholder="Password"
+              id="password"
+              className="form-input"
+              placeholder=""
               onChange={handleChange}
             />
+            <span className="floating-label">Password</span>
           </div>
+          <h4>
+            We'll call or text you to confirm your number. Standard message and
+            data rates apply.
+          </h4>
           <button
-            className="authDetails-button"
+            className="authEmail-button"
             type="submit"
             disabled={loading}
+            onClick={() => changeStep(2)}
           >
-            {loading ? <CircularProgress color="white" size="20px" /> : "Login"}
+            {loading ? (
+              <CircularProgress color="white" size="20px" />
+            ) : (
+              "Login or Signup"
+            )}
           </button>
-        </form>
+        </div>
+        <div className="auth-break">
+          <hr className="auth-line" />
+          <span>or</span>
+          <hr className="auth-line" />
+        </div>
+        <div className="auth2-login-container">
+          <div className="auth2-logo-container">
+            <FontAwesomeIcon icon={faFacebook} className="auth2-icon" />
+          </div>
+          <h3>Continue with Facebook</h3>
+        </div>
+        <div className="auth2-login-container">
+          <div className="auth2-logo-container">
+            <FontAwesomeIcon icon={faGoogle} className="auth2-icon" />
+          </div>
+          <h3>Continue with Google</h3>
+        </div>
+        <div className="auth2-login-container" onClick={() => changeStep(0)}>
+          <div className="auth2-logo-container">
+            <FontAwesomeIcon icon={faMobileScreen} className="auth2-icon" />
+          </div>
+          <h3>Continue with Phone</h3>
+        </div>
       </div>
     </div>
   );

@@ -72,43 +72,50 @@ export default function PhoneVerification({
         </div>
         <h3>Confirm your number</h3>
       </div>
-      <h3 className="phone-text">
-        Enter the code we sent over SMS to {credentials.phone}
-      </h3>
-      <div className="phone-verification-input-container" onClick={handleClick}>
-        {CODE_LENGTH.map((v, index) => {
-          const selected = code.length === index;
-          const filled =
-            code.length === CODE_LENGTH.length &&
-            index === CODE_LENGTH.length - 1;
-          return (
-            <div className="display">
-              {code[index]}
-              {(selected || filled) && focused && <div className="shadows" />}
-            </div>
-          );
-        })}
-        <input
-          value=""
-          ref={input}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onKeyUp={handleKeyUp}
-          className="input"
-          style={{
-            width: "58px",
-            top: "0px",
-            bottom: "0px",
-            left: `${selectedIndex * 58}px`,
-            opacity: hideInput ? 0 : 1,
-          }}
-        />
+      <div className="phone-content-container">
+        <h3 className="phone-text">
+          Enter the code we sent over SMS to {credentials.phone}
+        </h3>
+        <div
+          className="phone-verification-input-container"
+          onClick={handleClick}
+        >
+          {CODE_LENGTH.map((v, index) => {
+            const selected = code.length === index;
+            const filled =
+              code.length === CODE_LENGTH.length &&
+              index === CODE_LENGTH.length - 1;
+            return (
+              <div className="display">
+                {code[index]}
+                {(selected || filled) && focused && <div className="shadows" />}
+              </div>
+            );
+          })}
+          <input
+            value=""
+            ref={input}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onKeyUp={handleKeyUp}
+            className="input"
+            style={{
+              width: "58px",
+              top: "0px",
+              bottom: "0px",
+              left: `${selectedIndex * 58}px`,
+              opacity: hideInput ? 0 : 1,
+            }}
+          />
+        </div>
+        <h3 className="phone-options">
+          Didn't get a code? <span>More options</span>
+        </h3>
+        {/* <button onClick={handleNext} className="phone-button">
+          Submit
+        </button> */}
       </div>
-      <h3 className="phone-options">
-        Didn't get a code? <span>More options</span>
-      </h3>
-      <button onClick={handleNext}>temp</button>
     </div>
   );
 }

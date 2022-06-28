@@ -82,14 +82,14 @@ export default function Sidebar() {
           </NavLink>
 
           <NavLink
-            to="/delivery"
+            to="/jobs"
             className={({ isActive }) =>
               `sidebarIcon-container ${isActive ? "active-side" : ""}`
             }
           >
             <li>
               <LocalShippingIcon className="icon" />
-              <h3>Delivery</h3>
+              <h3>Jobs</h3>
             </li>
           </NavLink>
           <p className="title">USEFUL</p>

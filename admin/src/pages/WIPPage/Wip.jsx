@@ -10,7 +10,7 @@ export default function Wip() {
   return (
     <div className="wip-wrapper">
       <div className="wip-container">
-        <Link className="logo-container" to="/">
+        <Link className="logo-container" to="/dashboard">
           <img src={bamlogo} alt="Bamboos Logo" />
         </Link>
         <div className="progress-image-container">

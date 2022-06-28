@@ -3,9 +3,13 @@ import { Navigate, Outlet } from "react-router-dom";
 import Topbar from "../components/Topbar/Topbar";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./protectedRoutes.scss";
+import { useEffect } from "react";
 
-export const ProtectedRoutes = ({ user }) => {
-  return true ? (
+export const ProtectedRoutes = ({ admin }) => {
+  useEffect(() => {
+    console.log(admin);
+  });
+  return admin ? (
     <div className="protected-provider">
       <Sidebar />
       <div className="protected-provider-container">
@@ -16,6 +20,6 @@ export const ProtectedRoutes = ({ user }) => {
       </div>
     </div>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/" />
   );
 };
