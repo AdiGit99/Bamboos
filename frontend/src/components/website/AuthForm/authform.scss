@@ -7,6 +7,7 @@
   text-decoration: none;
   font-size: 15px;
   color: black;
+  font-family: $primary-font;
 }
 
 .auth-container {
@@ -48,7 +49,8 @@
       display: flex;
       font-family: $primary-font;
       font-size: 15px;
-      font-weight: 500;
+      letter-spacing: -0.3px;
+      font-weight: 600;
       line-height: 1.3;
     }
   }
@@ -155,6 +157,10 @@
           left: 20px;
           top: 18px;
           transition: 0.2s ease all;
+          font-family: $primary-font;
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 1.3;
         }
 
         input {

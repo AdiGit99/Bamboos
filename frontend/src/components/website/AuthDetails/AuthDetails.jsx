@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 
-import { Close } from "@material-ui/icons";
+import { ChevronLeft } from "@material-ui/icons";
 import { CircularProgress } from "@material-ui/core";
 import "./authDetails.scss";
 
@@ -41,71 +41,84 @@ export default function AuthForm({
   return (
     <div className="authDetails-container">
       <div className="authDetails-topbar">
-        <div className="authDetails-close-container" onClick={toggleAuth}>
-          <Close className="authDetails-close" />
+        <div
+          className="authDetails-close-container"
+          onClick={() => changeStep(0)}
+        >
+          <ChevronLeft className="authDetails-close" />
         </div>
-        <h3>Sign up with Facebook or Google</h3>
-      </div>
-      <div className="authDetails-break">
-        <hr className="authDetails-line" />
-        <span>or</span>
-        <hr className="authDetails-line" />
+        <h3>Finish signing up</h3>
       </div>
       <div className="authDetails-content">
         <form className="form" onSubmit={handleClick}>
-          <div className="form-input-container">
+          <div className="input-container input-one">
             <input
               type="text"
-              id="email"
               required
-              className="text-input"
-              placeholder="email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-input-container">
-            <input
-              type="text"
               id="firstname"
-              required
-              className="text-input"
-              placeholder="First name"
+              className="form-input"
+              placeholder=""
               onChange={handleChange}
             />
+            <span className="floating-label">First name</span>
           </div>
-          <div className="form-input-container">
+          <div className="input-container input-two">
             <input
               type="text"
+              required
               id="lastname"
-              required
-              className="text-input"
-              placeholder="Last name"
+              className="form-input"
+              placeholder=""
               onChange={handleChange}
             />
+            <span className="floating-label">Last name</span>
           </div>
-          <div className="form-input-container">
-            <input
-              type="text"
-              id="password"
-              required
-              className="text-input"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </div>
-          <h2>Birthday</h2>
-          <div className="form-input-container">
+
+          <p className="word-break">
+            Make sure it matches the name on your government ID.
+          </p>
+          <div className="input-container">
             <input
               type="date"
-              id="dob"
               required
-              className="text-input"
-              placeholder="Password"
+              id="dob"
+              className="form-input"
+              placeholder=""
               onChange={handleChange}
             />
+            {/* <span className="floating-label">Birth date</span> */}
           </div>
-          <p>
-            By click Sign up or Continue with, I agree to Bamboo's Terms of
+          <p className="word-break">
+            To sign up, you need to be at least 18. Your birthday won't be
+            shared with other people who use Bamboos.
+          </p>
+          <div className="input-container">
+            <input
+              type="email"
+              required
+              id="email"
+              className="form-input"
+              placeholder=""
+              onChange={handleChange}
+            />
+            <span className="floating-label">Email</span>
+          </div>
+          <p className="word-break">
+            We'll email you appointment confirmations and receipts
+          </p>
+          <div className="input-container">
+            <input
+              type="password"
+              required
+              id="password"
+              className="form-input"
+              placeholder=""
+              onChange={handleChange}
+            />
+            <span className="floating-label">Password</span>
+          </div>
+          <p className="word-break">
+            By selecting Agree and Continue, I agree to Bamboo's Terms of
             Service, Payments Terms of Service, Privacy Policy, and
             Nondiscrmination Policy.
           </p>
@@ -117,7 +130,7 @@ export default function AuthForm({
             {loading ? (
               <CircularProgress color="white" size="20px" />
             ) : (
-              "Sign up"
+              "Agree and continue"
             )}
           </button>
         </form>

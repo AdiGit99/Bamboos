@@ -4,7 +4,8 @@ import { AuthContext } from "../../../context/AuthContext";
 import AuthForm from "../AuthForm/AuthForm";
 import AuthDetails from "../AuthDetails/AuthDetails";
 import AuthEmail from "../AuthEmail/AuthEmail";
-import PhoneVerification from "../PhoneVerification/PhoneVerification";
+import AuthPassword from "../AuthPassword/AuthPassword";
+import AuthPhoneVerification from "../AuthPhoneVerification/AuthPhoneVerification";
 
 import "./authModal.scss";
 
@@ -58,16 +59,26 @@ export default function AuthModal({ toggleAuth }) {
         );
 
       case 2:
+        return (
+          <AuthPassword
+            credentials={credentials}
+            handleChange={handleChange}
+            changeStep={changeStep}
+            toggleAuth={toggleAuth}
+          />
+        );
+
+      case 3:
         //phone verification
         return (
-          <PhoneVerification
+          <AuthPhoneVerification
             credentials={credentials}
             toggleAuth={toggleAuth}
             changeStep={changeStep}
           />
         );
 
-      case 3:
+      case 4:
         return (
           <AuthDetails
             credentials={credentials}

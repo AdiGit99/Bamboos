@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { ChevronLeft } from "@material-ui/icons";
-import "./phoneVerification.scss";
+import "./authPhoneVerification.scss";
 
-export default function PhoneVerification({
+export default function AuthPhoneVerification({
   credentials,
   toggleAuth,
   changeStep,

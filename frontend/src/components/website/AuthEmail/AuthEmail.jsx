@@ -27,6 +27,10 @@ export default function AuthEmail({
       email: credentials.email,
       password: credentials.password,
     };
+
+    //if email is found in database, then go to password page
+    //else go to authdetails page for more info to complete signup
+
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("/auth/login", user);
@@ -49,7 +53,7 @@ export default function AuthEmail({
       <div className="authEmail-content">
         <h2>Welcome to Bamboos</h2>
         <div className="form">
-          <div className="input-container input-one">
+          <div className="input-container">
             <input
               type="email"
               required
@@ -59,17 +63,6 @@ export default function AuthEmail({
               onChange={handleChange}
             />
             <span className="floating-label">Email</span>
-          </div>
-          <div className="input-container input-two">
-            <input
-              type="password"
-              required
-              id="password"
-              className="form-input"
-              placeholder=""
-              onChange={handleChange}
-            />
-            <span className="floating-label">Password</span>
           </div>
           <h4>
             We'll call or text you to confirm your number. Standard message and

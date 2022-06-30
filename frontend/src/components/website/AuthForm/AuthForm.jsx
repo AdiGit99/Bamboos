@@ -63,7 +63,7 @@ export default function AuthForm({ handleChange, toggleAuth, changeStep }) {
             className="auth-button"
             type="submit"
             disabled={loading}
-            onClick={() => changeStep(2)}
+            onClick={() => changeStep(4)}
           >
             {loading ? (
               <CircularProgress color="white" size="20px" />
